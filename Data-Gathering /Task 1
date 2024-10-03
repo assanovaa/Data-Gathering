@@ -1,0 +1,358 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPHwwpLIBkacUu5zID2IABe",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/assanovaa/Data-Gathering/blob/main/Data-Gathering%20/Task%201\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "BDpi56Axpi4F",
+        "outputId": "0638af3f-2ea8-4fff-82e4-b0ba33a782ad"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[-2.    2.25]\n"
+          ]
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "\n",
+        "A = np.array([[2, 4],\n",
+        "             [6, 8]])\n",
+        "\n",
+        "b = np.array([5, 6])\n",
+        "\n",
+        "x = np.linalg.solve(A, b)\n",
+        "\n",
+        "print(x)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "A = np.array([[3, 1], [3, 7]])\n",
+        "B = np.array([[4, 8], [9, 2]])\n",
+        "\n",
+        "C = np.dot(A, B)\n",
+        "print(C)\n",
+        "\n",
+        "A_T = np.transpose(A)\n",
+        "B_T = np.transpose(B)\n",
+        "print(A_T,B_T)\n",
+        "\n",
+        "A_inv = np.linalg.inv(A)\n",
+        "print(A_inv)\n",
+        "\n",
+        "v1 = np.array([1, 0, 0])\n",
+        "v2 = np.array([0, 1, 0])\n",
+        "cross_product = np.cross(v1, v2)\n",
+        "print(cross_product)\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "UZgpDiL-rjt0",
+        "outputId": "97d97e0b-5238-48cb-df6f-563d1c37e78b"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[21 26]\n",
+            " [75 38]]\n",
+            "[[3 3]\n",
+            " [1 7]] [[4 9]\n",
+            " [8 2]]\n",
+            "[[ 0.38888889 -0.05555556]\n",
+            " [-0.16666667  0.16666667]]\n",
+            "[0 0 1]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "def f(x):\n",
+        "    return x ** 2\n",
+        "\n",
+        "x = 2\n",
+        "h = 1e-5\n",
+        "f_prime = (f(x + h) - f(x - h)) / (2 * h)\n",
+        "print(f_prime)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "OgY23S9QuYYl",
+        "outputId": "61ab66ff-62d4-4a79-f867-3f2c80cc9f24"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "4.000000000026205\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "x = np.array([1+2j, 3+4j])\n",
+        "\n",
+        "print(\"First array:\")\n",
+        "print(x)\n",
+        "\n",
+        "y = np.array([5+6j, 7+8j])\n",
+        "\n",
+        "print(\"Second array:\")\n",
+        "print(y)\n",
+        "\n",
+        "z = np.vdot(x, y)\n",
+        "\n",
+        "print(\"Product of above two arrays:\")\n",
+        "print(z)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "98Gnud3PvgCd",
+        "outputId": "0939fc4f-74ce-4a68-aad8-fef699ea5f5a"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "First array:\n",
+            "[1.+2.j 3.+4.j]\n",
+            "Second array:\n",
+            "[5.+6.j 7.+8.j]\n",
+            "Product of above two arrays:\n",
+            "(70-8j)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def f(x):\n",
+        "    return x ** 2\n",
+        "\n",
+        "a, b = 0, 3\n",
+        "n = 1000\n",
+        "x = np.linspace(a, b, n)\n",
+        "dx = (b - a) / (n - 1)\n",
+        "\n",
+        "integral = np.sum(f(x)) * dx\n",
+        "print(integral)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "qUqzkSl-xeqy",
+        "outputId": "210789ea-077c-4c3f-bb81-843df407a125"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "9.013518022527032\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "print(\"Roots of the first polynomial:\")\n",
+        "print(np.roots([1, -2, 1]))\n",
+        "\n",
+        "print(\"Roots of the second polynomial:\")\n",
+        "print(np.roots([1, -12, 10, 7, -10]))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "pZ9Oj3f-xlM-",
+        "outputId": "562a0628-8c74-4918-9147-d2bdfa353ddd"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Roots of the first polynomial:\n",
+            "[1. 1.]\n",
+            "Roots of the second polynomial:\n",
+            "[11.04461946+0.j        -0.8711421 +0.j         0.91326132+0.4531004j\n",
+            "  0.91326132-0.4531004j]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "print(\"Polynomial value when x = 2:\")\n",
+        "print(np.polyval([1, -2, 1], 2))\n",
+        "\n",
+        "print(\"Polynomial value when x = 3:\")\n",
+        "print(np.polyval([1, -12, 10, 7, -10], 3))\n"
+      ],
+      "metadata": {
+        "id": "NlarNECcx5Tx"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "data = np.array([9, 4, 2, 3, 5])\n",
+        "\n",
+        "\n",
+        "mean_value = np.mean(data)\n",
+        "print(mean_value)\n",
+        "\n",
+        "median_value = np.median(data)\n",
+        "print(median_value)\n",
+        "\n",
+        "min_value = np.min(data)\n",
+        "print(min_value)\n",
+        "\n",
+        "\n",
+        "max_value = np.max(data)\n",
+        "print(max_value)\n",
+        "\n",
+        "range_value = np.ptp(data)\n",
+        "print(range_value)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "UWGY0CQix_Lj",
+        "outputId": "1753d8b8-33e3-4cd8-845f-e981e4aca908"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "4.6\n",
+            "4.0\n",
+            "2\n",
+            "9\n",
+            "7\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "\n",
+        "x = np.arange(5)\n",
+        "\n",
+        "print(\"\\nOriginal array:\")\n",
+        "print(x)\n",
+        "\n",
+        "weights = np.arange(1, 6)\n",
+        "r1 = np.average(x, weights=weights)\n",
+        "r2 = (x * (weights / weights.sum())).sum()\n",
+        "\n",
+        "\n",
+        "assert np.allclose(r1, r2)\n",
+        "\n",
+        "print(\"\\nWeighted average of the said array:\")\n",
+        "print(r1)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "j_pyTlwmzqgq",
+        "outputId": "f6ef5c62-16cc-4efb-98ad-5ff890909c16"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "Original array:\n",
+            "[0 1 2 3 4]\n",
+            "\n",
+            "Weighted average of the said array:\n",
+            "2.6666666666666665\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
