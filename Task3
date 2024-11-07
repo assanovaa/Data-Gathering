@@ -1,0 +1,137 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyM6NxFet51QrGoUtMDrJTMO",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/assanovaa/Data-Gathering/blob/main/Task3\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "select\n",
+        "    request_at as \"Day\",\n",
+        "    round(\n",
+        "        (sum(case when status = \"cancelled_by_driver\" or status = \"cancelled_by_client\" then 1 else 0 end) / count(status)), 2\n",
+        "    ) as \"Cancellation Rate\"\n",
+        "from\n",
+        "    Trips\n",
+        "where\n",
+        "    client_id not in (select users_id from Users where role = 'client' and banned ='Yes')\n",
+        "and\n",
+        "    driver_id not in (select users_id from Users where role = 'driver' and banned ='Yes')\n",
+        "and\n",
+        "    request_at >= \"2013-10-01\" and request_at <= \"2013-10-03\"\n",
+        "group by\n",
+        "    request_at"
+      ],
+      "metadata": {
+        "id": "unl7fyhBBjWP"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "select de.name as Department\n",
+        "       ,em.name as Employee\n",
+        "       ,Salary\n",
+        "from employee em\n",
+        "join department de\n",
+        "on em.departmentid = de.id\n",
+        "where 3 > ( select count(distinct em2.salary)\n",
+        "            from employee em2\n",
+        "            where em2.salary > em.salary\n",
+        "            and em.departmentId = em2.departmentId)"
+      ],
+      "metadata": {
+        "id": "2KabA76nFLf2"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Write your MySQL query statement below\n",
+        "WITH cte AS (\n",
+        "  SELECT id\n",
+        "  FROM Stadium\n",
+        "  WHERE people > 99\n",
+        ")\n",
+        "SELECT *\n",
+        "FROM Stadium\n",
+        "WHERE (id-1 IN (TABLE cte) AND id-2 IN (TABLE cte) AND people > 99)\n",
+        "OR (id+1 IN (TABLE cte) AND id+2 IN (TABLE cte) AND people > 99)\n",
+        "OR (id+1 IN (TABLE cte) AND id-1 IN (TABLE cte) AND people > 99)"
+      ],
+      "metadata": {
+        "id": "NS9cpP3L2mNS"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "SELECT\n",
+        "    QUEUE1.PERSON_NAME\n",
+        "from\n",
+        "    QUEUE QUEUE1\n",
+        "join\n",
+        "    QUEUE QUEUE2\n",
+        "on\n",
+        "    QUEUE1.TURN >= QUEUE2.TURN\n",
+        "group by\n",
+        "    QUEUE1.TURN\n",
+        "having\n",
+        "    SUM(QUEUE2.WEIGHT) <= 1000\n",
+        "order by\n",
+        "    SUM(QUEUE2.WEIGHT) DESC\n",
+        "limit 1;\n"
+      ],
+      "metadata": {
+        "id": "EuXVRgN-DmP4"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "SELECT A.name\n",
+        "from Employee A\n",
+        "JOIN Employee B ON A.id = B.managerId\n",
+        "GROUP BY B . managerId\n",
+        "HAVING COUNT(*)>= 5 ;"
+      ],
+      "metadata": {
+        "id": "6hauUHZ4D0ud"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
